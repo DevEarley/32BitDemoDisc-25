@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cx1n5y1xmp6mm"]
+
+[ext_resource type="Shader" uid="uid://domnbbhligt0x" path="res://cloud_shader.tres" id="1_a6wvs"]
+[ext_resource type="Texture2D" uid="uid://jgwjoitvq26s" path="res://gradient_sheet.png" id="2_7c446"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_a6wvs")
+shader_parameter/MainTex = ExtResource("2_7c446")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7cbdpq2fwhcb"]
+
+[ext_resource type="PackedScene" uid="uid://bkr2e2oendvmv" path="res://clouds.glb" id="1_o2ihr"]
+
+[node name="CLOUD_CLUSTER" type="Node3D"]
+
+[node name="clouds" parent="." instance=ExtResource("1_o2ihr")]
+
+[node name="clouds2" parent="." instance=ExtResource("1_o2ihr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.1284, 54.3048)
+
+[node name="clouds3" parent="." instance=ExtResource("1_o2ihr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.889, 63.6148)
+
+[node name="clouds6" parent="." instance=ExtResource("1_o2ihr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -32.9144, -81.4915)
+
+[node name="clouds4" parent="." instance=ExtResource("1_o2ihr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -33.8509, -18.3692)
+
+[node name="clouds5" parent="." instance=ExtResource("1_o2ihr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513998, -64.4327)

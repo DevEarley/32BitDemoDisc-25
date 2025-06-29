@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://rguvx1pj1phm"
+path="res://.godot/imported/Plant 1 Bruv (3).obj-79778bc0516cc22f3976a1907c96280e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Plant 1 Bruv (3).obj-79778bc0516cc22f3976a1907c96280e.mesh"]
+
+source_file="res://Plant 1 Bruv (3).obj"
+dest_files=["res://.godot/imported/Plant 1 Bruv (3).obj-79778bc0516cc22f3976a1907c96280e.mesh", "res://.godot/imported/Plant 1 Bruv (3).obj-79778bc0516cc22f3976a1907c96280e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
