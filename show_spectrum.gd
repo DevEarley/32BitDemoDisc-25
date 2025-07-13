@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const VU_COUNT = 16
 const FREQ_MAX = 11050.0
 
@@ -10,10 +9,9 @@ const HEIGHT_SCALE = 8.0
 const MIN_DB = 60
 const ANIMATION_SPEED = 0.1
 
-var spectrum
+var spectrum: AudioEffectInstance
 var min_values = []
 var max_values = []
-
 
 func _draw():
 	var w = WIDTH / VU_COUNT

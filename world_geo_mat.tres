@@ -1,9 +1,12 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bywce58sycr81"]
 
-[ext_resource type="Shader" uid="uid://c8qluhjdgdvs" path="res://world_geo_shader.tres" id="1_rreym"]
+[ext_resource type="Shader" uid="uid://ci26nxq0stdvs" path="res://world_geo_shader_2.gdshader" id="1_wqupy"]
 [ext_resource type="Texture2D" uid="uid://jgwjoitvq26s" path="res://gradient_sheet.png" id="2_wqupy"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_rreym")
+shader = ExtResource("1_wqupy")
+shader_parameter/rotation = -0.295
+shader_parameter/CURVE = 0.4
 shader_parameter/MainTex = ExtResource("2_wqupy")

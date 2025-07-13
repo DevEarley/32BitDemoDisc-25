@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=23 format=3 uid="uid://c8qluhjdgdvs"]
+[gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://c8qluhjdgdvs"]
 
 [sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_5nm43"]
 function = 23
@@ -47,6 +47,18 @@ parameter_name = "CURVE"
 default_value_enabled = true
 default_value = 0.4
 
+[sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_5nm43"]
+default_input_values = [0, Vector3(0, 0, 0)]
+linked_parent_graph_frame = 5
+port_type = 4
+
+[sub_resource type="VisualShaderNodeRotationByAxis" id="VisualShaderNodeRotationByAxis_vpmj5"]
+default_input_values = [0, Vector3(0, 0, 0), 1, 90.0, 2, Vector3(0, 1, 0)]
+linked_parent_graph_frame = 5
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_36kme"]
+parameter_name = "rotation"
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ll4nq"]
 linked_parent_graph_frame = 5
 input_name = "vertex"
@@ -59,9 +71,9 @@ input_name = "node_position_world"
 linked_parent_graph_frame = 5
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_fd1mc"]
-size = Vector2(996, 644)
+size = Vector2(2036, 740)
 title = "POSITION"
-attached_nodes = PackedInt32Array(2, 4, 3)
+attached_nodes = PackedInt32Array(2, 4, 3, 16, 17)
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2s6e7"]
 input_name = "camera_position_world"
@@ -76,9 +88,11 @@ operator = 1
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_uslqw"]
 
 [resource]
+resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
+uniform float rotation;
 uniform float CURVE = 0.40000000596046;
 uniform sampler2D MainTex;
 
@@ -89,12 +103,36 @@ void vertex() {
 	vec3 n_out2p0 = VERTEX;
 
 
+// FloatParameter:18
+	float n_out18p0 = rotation;
+
+
+	vec3 n_out17p0;
+	mat4 n_out17p1;
+// RotationByAxis:17
+	vec3 n_in17p2 = vec3(0.00000, 1.00000, 0.00000);
+	{
+		float __angle = n_out18p0;
+		vec3 __axis = normalize(n_in17p2);
+		mat3 __rot_matrix = mat3(
+			vec3( cos(__angle)+__axis.x*__axis.x*(1.0 - cos(__angle)), __axis.x*__axis.y*(1.0-cos(__angle))-__axis.z*sin(__angle), __axis.x*__axis.z*(1.0-cos(__angle))+__axis.y*sin(__angle) ),
+			vec3( __axis.y*__axis.x*(1.0-cos(__angle))+__axis.z*sin(__angle), cos(__angle)+__axis.y*__axis.y*(1.0-cos(__angle)), __axis.y*__axis.z*(1.0-cos(__angle))-__axis.x*sin(__angle) ),
+			vec3( __axis.z*__axis.x*(1.0-cos(__angle))-__axis.y*sin(__angle), __axis.z*__axis.y*(1.0-cos(__angle))+__axis.x*sin(__angle), cos(__angle)+__axis.z*__axis.z*(1.0-cos(__angle)) )
+		);
+		n_out17p0 = n_out2p0 * __rot_matrix;
+	}
+
+
+// Reroute:16
+	vec3 n_out16p0 = n_out17p0;
+
+
 // Input:3
 	vec3 n_out3p0 = NODE_POSITION_WORLD;
 
 
 // VectorOp:4
-	vec3 n_out4p0 = n_out2p0 + n_out3p0;
+	vec3 n_out4p0 = n_out17p0 + n_out3p0;
 
 
 // Input:6
@@ -129,7 +167,7 @@ void vertex() {
 
 
 // VectorOp:8
-	vec3 n_out8p0 = n_out2p0 - n_out9p0;
+	vec3 n_out8p0 = n_out16p0 - n_out9p0;
 
 
 // Output:0
@@ -186,23 +224,24 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-427.328, 0.941635)
+graph_offset = Vector2(-497.264, -178.838)
+nodes/vertex/0/position = Vector2(1120, -160)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_ll4nq")
-nodes/vertex/2/position = Vector2(-2460, -100)
+nodes/vertex/2/position = Vector2(-3700, -340)
 nodes/vertex/3/node = SubResource("VisualShaderNodeInput_gvsxl")
-nodes/vertex/3/position = Vector2(-2460, 280)
+nodes/vertex/3/position = Vector2(-3200, 80)
 nodes/vertex/4/node = SubResource("VisualShaderNodeVectorOp_rqewk")
-nodes/vertex/4/position = Vector2(-1880, -20)
+nodes/vertex/4/position = Vector2(-2080, -20)
 nodes/vertex/5/node = SubResource("VisualShaderNodeFrame_fd1mc")
-nodes/vertex/5/position = Vector2(-2080, -200)
+nodes/vertex/5/position = Vector2(-3740, -420)
 nodes/vertex/6/node = SubResource("VisualShaderNodeInput_2s6e7")
-nodes/vertex/6/position = Vector2(-2480, 580)
+nodes/vertex/6/position = Vector2(-4280, 420)
 nodes/vertex/7/node = SubResource("VisualShaderNodeVectorOp_kl53p")
-nodes/vertex/7/position = Vector2(-1380, 260)
+nodes/vertex/7/position = Vector2(-1460, 320)
 nodes/vertex/8/node = SubResource("VisualShaderNodeVectorOp_gwl5d")
-nodes/vertex/8/position = Vector2(-80, -280)
+nodes/vertex/8/position = Vector2(560, -280)
 nodes/vertex/9/node = SubResource("VisualShaderNodeVectorCompose_uslqw")
-nodes/vertex/9/position = Vector2(200, 240)
+nodes/vertex/9/position = Vector2(360, 240)
 nodes/vertex/10/node = SubResource("VisualShaderNodeFloatOp_5nm43")
 nodes/vertex/10/position = Vector2(-660, 300)
 nodes/vertex/12/node = SubResource("VisualShaderNodeVectorLen_36kme")
@@ -210,8 +249,14 @@ nodes/vertex/12/position = Vector2(-1040, 420)
 nodes/vertex/13/node = SubResource("VisualShaderNodeFloatOp_vpmj5")
 nodes/vertex/13/position = Vector2(-240, 380)
 nodes/vertex/14/node = SubResource("VisualShaderNodeFloatParameter_5nm43")
-nodes/vertex/14/position = Vector2(-900, 760)
-nodes/vertex/connections = PackedInt32Array(6, 0, 7, 1, 4, 0, 7, 0, 2, 0, 8, 0, 8, 0, 0, 0, 7, 0, 12, 0, 12, 0, 10, 0, 9, 0, 8, 1, 2, 0, 4, 0, 10, 0, 13, 0, 13, 0, 9, 1, 3, 0, 4, 1, 14, 0, 10, 1)
+nodes/vertex/14/position = Vector2(-1680, 860)
+nodes/vertex/16/node = SubResource("VisualShaderNodeReroute_5nm43")
+nodes/vertex/16/position = Vector2(-2600, -300)
+nodes/vertex/17/node = SubResource("VisualShaderNodeRotationByAxis_vpmj5")
+nodes/vertex/17/position = Vector2(-3100, -340)
+nodes/vertex/18/node = SubResource("VisualShaderNodeFloatParameter_36kme")
+nodes/vertex/18/position = Vector2(-3420, -800)
+nodes/vertex/connections = PackedInt32Array(6, 0, 7, 1, 4, 0, 7, 0, 8, 0, 0, 0, 7, 0, 12, 0, 12, 0, 10, 0, 9, 0, 8, 1, 10, 0, 13, 0, 3, 0, 4, 1, 14, 0, 10, 1, 13, 0, 9, 1, 16, 0, 8, 0, 2, 0, 17, 0, 17, 0, 16, 0, 17, 0, 4, 0, 18, 0, 17, 1)
 nodes/fragment/0/position = Vector2(1380, 220)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_5nm43")
 nodes/fragment/2/position = Vector2(-1680, -140)
