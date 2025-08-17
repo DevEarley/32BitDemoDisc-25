@@ -3,26 +3,26 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djfhuxow6fsu0"
-path="res://.godot/imported/32bitdemodisk.glb-ee6d833184f27c59d18bb6b30f3a916c.scn"
+uid="uid://tr55u1bxma3p"
+path="res://.godot/imported/half-skull.glb-3256916847e83987939559d726cc209d.scn"
 
 [deps]
 
-source_file="res://32bitdemodisk.glb"
-dest_files=["res://.godot/imported/32bitdemodisk.glb-ee6d833184f27c59d18bb6b30f3a916c.scn"]
+source_file="res://half-skull.glb"
+dest_files=["res://.godot/imported/half-skull.glb-3256916847e83987939559d726cc209d.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=1.5
 nodes/import_as_skeleton_bones=false
-nodes/use_node_type_suffixes=true
+nodes/use_node_type_suffixes=false
 meshes/ensure_tangents=false
 meshes/generate_lods=false
 meshes/create_shadow_meshes=false
-meshes/light_baking=0
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=false
@@ -34,19 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"32BitGradientSheet": {
+"Cube2_auv": {
 "use_external/enabled": true,
 "use_external/path": "uid://bywce58sycr81"
-}
-},
-"meshes": {
-"32bitdemodisk_GROUND": {
-"generate/lightmap_uv": 2,
-"generate/lods": 2,
-"generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
 }
 }
 }

@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://c8qluhjdgdvs"]
+[gd_resource type="VisualShader" load_steps=30 format=3 uid="uid://c8qluhjdgdvs"]
 
 [sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_5nm43"]
 function = 23
@@ -59,9 +59,21 @@ linked_parent_graph_frame = 5
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_36kme"]
 parameter_name = "rotation"
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_vpmj5"]
+parameter_name = "SCALE"
+default_value_enabled = true
+default_value = 1.0
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ll4nq"]
 linked_parent_graph_frame = 5
 input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_36kme"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5nm43"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_vpmj5"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_gvsxl"]
 linked_parent_graph_frame = 5
@@ -93,6 +105,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform float rotation;
+uniform float SCALE = 1.0;
 uniform float CURVE = 0.40000000596046;
 uniform sampler2D MainTex;
 
@@ -125,6 +138,24 @@ void vertex() {
 
 // Reroute:16
 	vec3 n_out16p0 = n_out17p0;
+
+
+// VectorDecompose:21
+	float n_out21p0 = n_out16p0.x;
+	float n_out21p1 = n_out16p0.y;
+	float n_out21p2 = n_out16p0.z;
+
+
+// FloatParameter:19
+	float n_out19p0 = SCALE;
+
+
+// FloatOp:20
+	float n_out20p0 = n_out21p1 * n_out19p0;
+
+
+// VectorCompose:22
+	vec3 n_out22p0 = vec3(n_out21p0, n_out20p0, n_out21p2);
 
 
 // Input:3
@@ -167,7 +198,7 @@ void vertex() {
 
 
 // VectorOp:8
-	vec3 n_out8p0 = n_out16p0 - n_out9p0;
+	vec3 n_out8p0 = n_out22p0 - n_out9p0;
 
 
 // Output:0
@@ -224,7 +255,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-497.264, -178.838)
+graph_offset = Vector2(-693.016, -194.614)
 nodes/vertex/0/position = Vector2(1120, -160)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_ll4nq")
 nodes/vertex/2/position = Vector2(-3700, -340)
@@ -256,7 +287,15 @@ nodes/vertex/17/node = SubResource("VisualShaderNodeRotationByAxis_vpmj5")
 nodes/vertex/17/position = Vector2(-3100, -340)
 nodes/vertex/18/node = SubResource("VisualShaderNodeFloatParameter_36kme")
 nodes/vertex/18/position = Vector2(-3420, -800)
-nodes/vertex/connections = PackedInt32Array(6, 0, 7, 1, 4, 0, 7, 0, 8, 0, 0, 0, 7, 0, 12, 0, 12, 0, 10, 0, 9, 0, 8, 1, 10, 0, 13, 0, 3, 0, 4, 1, 14, 0, 10, 1, 13, 0, 9, 1, 16, 0, 8, 0, 2, 0, 17, 0, 17, 0, 16, 0, 17, 0, 4, 0, 18, 0, 17, 1)
+nodes/vertex/19/node = SubResource("VisualShaderNodeFloatParameter_vpmj5")
+nodes/vertex/19/position = Vector2(-800, -600)
+nodes/vertex/20/node = SubResource("VisualShaderNodeFloatOp_36kme")
+nodes/vertex/20/position = Vector2(-1140, 20)
+nodes/vertex/21/node = SubResource("VisualShaderNodeVectorDecompose_5nm43")
+nodes/vertex/21/position = Vector2(-1042.29, -196.248)
+nodes/vertex/22/node = SubResource("VisualShaderNodeVectorCompose_vpmj5")
+nodes/vertex/22/position = Vector2(91.8837, -309.429)
+nodes/vertex/connections = PackedInt32Array(6, 0, 7, 1, 4, 0, 7, 0, 8, 0, 0, 0, 7, 0, 12, 0, 12, 0, 10, 0, 9, 0, 8, 1, 10, 0, 13, 0, 3, 0, 4, 1, 14, 0, 10, 1, 2, 0, 17, 0, 17, 0, 16, 0, 17, 0, 4, 0, 18, 0, 17, 1, 19, 0, 20, 1, 13, 0, 9, 1, 16, 0, 21, 0, 21, 1, 20, 0, 20, 0, 22, 1, 21, 0, 22, 0, 21, 2, 22, 2, 22, 0, 8, 0)
 nodes/fragment/0/position = Vector2(1380, 220)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_5nm43")
 nodes/fragment/2/position = Vector2(-1680, -140)

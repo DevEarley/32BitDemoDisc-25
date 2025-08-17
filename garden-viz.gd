@@ -18,12 +18,13 @@ var BPM = 60
 @export var ANIMATED_LARGE_PROPS_FOR_LOW_END  :Array[AnimationPlayer]= []
 @export var ANIMATED_SMALL_PROPS_FOR_HIGH_END  :Array[AnimationPlayer]= []
 @export var ANIMATED_SPECIAL_PROPS_FOR_AVERAGED  :Array[AnimationPlayer]= []
-
+@export var DANCE_MAT:ShaderMaterial
 var SAMPLE_COUNT = 4
 
 var spectrum: AudioEffectInstance
 
-var ANIMATION_SPEED = 0.1
+var ANIMATION_SPEED =2.0
+
 var MAX_VALUES = []
 var MIN_VALUES = []
 var RAW_SAMPLE_DATA = []
@@ -34,23 +35,44 @@ var MIDDLE_ENERGY_THRESHOLD_FOR_SPECIAL = 0.01
 var MIDDLE_ENERGY_THRESHOLD_FOR_SMALL = 0.01
 var LOUD_ENERGY_THRESHOLD_FOR_LARGE = 0.02
 
-func _ready():
+enum STATES{
+	ON_TITLE_SCREEN,
+	ON_BACKYARD_SCREEN,
+	IN_SHED,
+	CREDITS
+	}
+var STATE =STATES.ON_TITLE_SCREEN
 
+func _ready():
+	$Control/MUSIC_BUTTON.connect("pressed",toggle_music)
 	spectrum = AudioServer.get_bus_effect_instance(0, 0)
 	MIN_VALUES.resize(SAMPLE_COUNT)
 	MAX_VALUES.resize(SAMPLE_COUNT)
 	MIN_VALUES.fill(0.0)
 	MAX_VALUES.fill(0.0)
+
+func _input(event):
+		if(STATE == STATES.ON_TITLE_SCREEN):
+			if(event.is_action_pressed("ui_accept")):
+				$WORM_ANIMATOR.play("logo_out");
+
 func _process(delta):
 	if(enabled==false):return
 	RAW_SAMPLE_DATA = []
 	capture_samples();
 	lerp_to_new_values();
 	update_average_values()
-	update_largest_props();
-	update_large_props();
-	update_small_props();
-	update_special_props();
+	var old_scale = DANCE_MAT.get_shader_parameter("SCALE");
+	var value_ = RAW_SAMPLE_DATA[2]*4.0
+	DANCE_MAT.set_shader_parameter("SCALE",lerp(old_scale,1.0+(value_/4.0 ),ANIMATION_SPEED))#lerp(old_scale, 1.0 + RAW_SAMPLE_DATA[2]*4.0,ANIMATION_SPEED))
+
+	#update_largest_props();
+	#update_large_props();
+	#update_small_props();
+	#update_special_props();
+func toggle_music():
+	enabled = !enabled
+	$AudioStreamPlayer.playing = enabled;
 
 func update_average_values():
 	var total = 0.0;
@@ -125,11 +147,11 @@ func update_special_props():
 			prop.play("idle")
 
 func scale_and_shift_prop(prop,sample):
+	if(prop == null):return
 	prop.scale = Vector3.ONE
-	var original_height = prop.get_aabb().size.y
-	prop.scale = lerp(prop.scale, Vector3.ONE + Vector3(0,sample*4.0,0),ANIMATION_SPEED)
-	var height = prop.get_aabb().size.y*prop.scale.y
-	prop.global_position.y = (height - original_height)
+	#var original_height = prop.get_aabb().size.y
+	#var height = prop.get_aabb().size.y*prop.scale.y
+	#prop.global_position.y = (height - original_height)
 
 func capture_samples():
 	var prev_hz = 0

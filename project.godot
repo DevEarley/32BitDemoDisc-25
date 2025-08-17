@@ -20,8 +20,11 @@ config/icon="res://icon.webp"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=3840
+window/size/viewport_height=2160
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
@@ -29,8 +32,43 @@ window/vsync/vsync_mode=0
 
 movie_writer/movie_file="C:/Users/TheDean/Desktop/demodisc.avi"
 
+[importer_defaults]
+
+scene={
+"_subresources": {},
+"animation/fps": 30,
+"animation/import": false,
+"animation/import_rest_as_RESET": false,
+"animation/remove_immutable_tracks": false,
+"animation/trimming": false,
+"gltf/embedded_image_handling": 0,
+"gltf/naming_version": 1,
+"import_script/path": "",
+"meshes/create_shadow_meshes": false,
+"meshes/ensure_tangents": false,
+"meshes/force_disable_compression": false,
+"meshes/generate_lods": false,
+"meshes/light_baking": 1,
+"meshes/lightmap_texel_size": 0.2,
+"nodes/apply_root_scale": true,
+"nodes/import_as_skeleton_bones": false,
+"nodes/root_name": "",
+"nodes/root_scale": 1.0,
+"nodes/root_type": "",
+"nodes/use_node_type_suffixes": true,
+"skins/use_named_skins": false
+}
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+shading/overrides/force_vertex_shading=true
+environment/ssao/quality=0
+environment/ssil/quality=0
+anti_aliasing/quality/msaa_3d=1
+textures/decals/filter=0
+textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0.12549, 0.12549, 0.12549, 1)

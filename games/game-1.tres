@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Game" load_steps=2 format=3 uid="uid://d20jp41du2u27"]
+
+[ext_resource type="Script" uid="uid://bcyrk0t5qyloq" path="res://game.gd" id="1_7lpyr"]
+
+[resource]
+script = ExtResource("1_7lpyr")
+game_name = "Mecha MGMT"
+url = "https://asfunasfun.itch.io/mecha-mgmt"

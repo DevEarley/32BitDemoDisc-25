@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djfhuxow6fsu0"
-path="res://.godot/imported/32bitdemodisk.glb-ee6d833184f27c59d18bb6b30f3a916c.scn"
+uid="uid://dfyhdaqj1fsgi"
+path="res://.godot/imported/cattails-cut.glb-5414b4237f9c1f3b4a96327e0e33975c.scn"
 
 [deps]
 
-source_file="res://32bitdemodisk.glb"
-dest_files=["res://.godot/imported/32bitdemodisk.glb-ee6d833184f27c59d18bb6b30f3a916c.scn"]
+source_file="res://cattails-cut.glb"
+dest_files=["res://.godot/imported/cattails-cut.glb-5414b4237f9c1f3b4a96327e0e33975c.scn"]
 
 [params]
 
@@ -22,33 +22,23 @@ nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=false
 meshes/generate_lods=false
 meshes/create_shadow_meshes=false
-meshes/light_baking=0
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=false
 animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"32BitGradientSheet": {
+"Material.001": {
 "use_external/enabled": true,
 "use_external/path": "uid://bywce58sycr81"
-}
-},
-"meshes": {
-"32bitdemodisk_GROUND": {
-"generate/lightmap_uv": 2,
-"generate/lods": 2,
-"generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
 }
 }
 }
 gltf/naming_version=1
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=0

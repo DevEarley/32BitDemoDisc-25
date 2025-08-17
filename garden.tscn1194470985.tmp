@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://b657hb3gh5a1"]
+[gd_scene load_steps=73 format=4 uid="uid://b657hb3gh5a1"]
 
 [ext_resource type="Script" uid="uid://c6iwg4v5tf1kc" path="res://garden-viz.gd" id="1_ago6t"]
 [ext_resource type="PackedScene" uid="uid://bekm4ud6ewpsk" path="res://shovel.glb" id="1_i01nk"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://coervxxnw21uv" path="res://game-button.gd" id="15_wr2o1"]
 [ext_resource type="Resource" uid="uid://d20jp41du2u27" path="res://games/game-1.tres" id="16_pvuiw"]
 [ext_resource type="PackedScene" uid="uid://dfyhdaqj1fsgi" path="res://cattails-cut.glb" id="17_6m3kv"]
+[ext_resource type="Shader" uid="uid://c8qluhjdgdvs" path="res://world_geo_shader.tres" id="18_noypi"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8etlx"]
 _surfaces = [{
@@ -1306,6 +1307,15 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmh25"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6m3kv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("18_noypi")
+shader_parameter/rotation = -0.295
+shader_parameter/CURVE = 0.4
+shader_parameter/SCALE = 1.0
+shader_parameter/MainTex = ExtResource("6_j2q2a")
+
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("LARGEST_PROPS_FOR_AVERAGED", "LARGE_PROPS_FOR_LOW_END")]
 script = ExtResource("1_ago6t")
 enabled = true
@@ -2075,87 +2085,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6137, 0, 13.744)
 [node name="Cube1_copy20" parent="boombox" index="0"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep17" parent="boombox" index="1"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_extract54" parent="boombox" index="2"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep52" parent="boombox" index="3"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep51" parent="boombox" index="4"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep50" parent="boombox" index="5"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep49" parent="boombox" index="6"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep48" parent="boombox" index="7"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep47" parent="boombox" index="8"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep46" parent="boombox" index="9"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep45" parent="boombox" index="10"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep44" parent="boombox" index="11"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep43" parent="boombox" index="12"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep42" parent="boombox" index="13"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep41" parent="boombox" index="14"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep40" parent="boombox" index="15"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cube1_sep39" parent="boombox" index="16"]
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Camera3D3" type="Camera3D" parent="."]
 transform = Transform3D(0.738709, 0.221713, -0.636516, -7.23153e-09, 0.944351, 0.328939, 0.674024, -0.24299, 0.697601, -4.06178, -4.20904, 15.7466)
@@ -2368,22 +2361,27 @@ offset_bottom = 40.0
 
 [node name="MUSIC_BUTTON" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -1019.0
-offset_bottom = 152.0
+anchor_bottom = 1.0
+offset_left = -1015.0
+offset_top = -1236.0
+offset_right = 4.0
+offset_bottom = -518.0
 grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("12_mlbg8")
 flat = true
 alignment = 2
 
 [node name="Label3" type="Label" parent="Control/MUSIC_BUTTON"]
 layout_mode = 1
-offset_left = 21.0
-offset_top = -3.0
-offset_right = 999.0
-offset_bottom = 96.0
+offset_left = 47.0
+offset_top = 589.0
+offset_right = 1025.0
+offset_bottom = 688.0
 theme = ExtResource("12_mlbg8")
 theme_override_font_sizes/font_size = 72
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vmh25")
@@ -2396,13 +2394,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01309, 4.76837e-07, -3.1481
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162839, 3.28193, 0.147255)
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
 
 [node name="Cattails_alt_sep87" parent="cattails-cut" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.222411, 3.06354, 0)
 extra_cull_margin = 1000.0
 ignore_occlusion_culling = true
-surface_material_override/0 = ExtResource("2_x23w0")
+surface_material_override/0 = SubResource("ShaderMaterial_6m3kv")
 
 [node name="Cattails_alt" parent="cattails-cut" index="2"]
 extra_cull_margin = 1000.0
