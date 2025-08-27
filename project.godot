@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.4")
 run/low_processor_mode=true
 config/icon="res://icon.webp"
 
+[autoload]
+
+WAIT="*res://GLOBAL_WAIT.gd"
+
 [display]
 
 window/size/viewport_width=3840

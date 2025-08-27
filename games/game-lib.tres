@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameLib" load_steps=4 format=3 uid="uid://cpgif52avavnj"]
+
+[ext_resource type="Script" uid="uid://bcyrk0t5qyloq" path="res://game.gd" id="1_cgbxi"]
+[ext_resource type="Resource" uid="uid://d20jp41du2u27" path="res://games/game-1.tres" id="1_uk6vn"]
+[ext_resource type="Script" uid="uid://ydt6fgm0ykiw" path="res://game-lib.gd" id="1_uwift"]
+
+[resource]
+script = ExtResource("1_uwift")
+Games = Array[ExtResource("1_cgbxi")]([ExtResource("1_uk6vn")])

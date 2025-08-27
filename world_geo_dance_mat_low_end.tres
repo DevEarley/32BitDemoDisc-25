@@ -8,6 +8,6 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_76si0")
 shader_parameter/rotation = -0.295
-shader_parameter/CURVE = 0.4
 shader_parameter/SCALE = 1.0
+shader_parameter/CURVE = 0.4
 shader_parameter/MainTex = ExtResource("2_0knrr")

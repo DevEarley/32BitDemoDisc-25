@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwy48xb3yqgxw"]
+
+[ext_resource type="Theme" uid="uid://6kdldrrr26nb" path="res://new_theme.tres" id="1_msw87"]
+[ext_resource type="Script" uid="uid://coervxxnw21uv" path="res://game-button.gd" id="2_qll7o"]
+
+[node name="GAME_BUTTON" type="Button"]
+theme = ExtResource("1_msw87")
+text = "Game #1"
+script = ExtResource("2_qll7o")

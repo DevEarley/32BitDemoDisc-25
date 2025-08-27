@@ -1,9 +1,8 @@
-[gd_scene load_steps=81 format=4 uid="uid://b657hb3gh5a1"]
+[gd_scene load_steps=75 format=4 uid="uid://b657hb3gh5a1"]
 
 [ext_resource type="Script" uid="uid://c6iwg4v5tf1kc" path="res://garden-viz.gd" id="1_ago6t"]
 [ext_resource type="PackedScene" uid="uid://bekm4ud6ewpsk" path="res://shovel.glb" id="1_i01nk"]
 [ext_resource type="Material" uid="uid://bywce58sycr81" path="res://world_geo_mat.tres" id="1_sdfy2"]
-[ext_resource type="Resource" uid="uid://cpgif52avavnj" path="res://games/game-lib.tres" id="2_3lvxn"]
 [ext_resource type="PackedScene" uid="uid://b253j8rmkieru" path="res://Trowel.glb" id="2_sdfy2"]
 [ext_resource type="Material" uid="uid://bfehikhptq4fj" path="res://world_geo_dance_mat_low_end.tres" id="2_x23w0"]
 [ext_resource type="Material" uid="uid://dgkusdchubexn" path="res://world_geo_dance_mat_low_mids.tres" id="3_btg6s"]
@@ -19,6 +18,8 @@
 [ext_resource type="Material" uid="uid://dg8rq4n17x8jq" path="res://world_geo_mat_flat.tres" id="12_55p0u"]
 [ext_resource type="Theme" uid="uid://6kdldrrr26nb" path="res://new_theme.tres" id="12_mlbg8"]
 [ext_resource type="PackedScene" uid="uid://b0vn75qsdb32" path="res://boombox.glb" id="14_vmh25"]
+[ext_resource type="Script" uid="uid://coervxxnw21uv" path="res://game-button.gd" id="15_wr2o1"]
+[ext_resource type="Resource" uid="uid://d20jp41du2u27" path="res://games/game-1.tres" id="16_pvuiw"]
 [ext_resource type="PackedScene" uid="uid://dfyhdaqj1fsgi" path="res://cattails-cut.glb" id="17_6m3kv"]
 [ext_resource type="PackedScene" uid="uid://blcwvdlhgphwm" path="res://game-info.tscn" id="18_3lvxn"]
 
@@ -688,113 +689,6 @@ background_color = Color(0.631373, 0.819608, 1, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_ydlvh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Game-info:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(7.949, -0.805, 15.184)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Game-info:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_pu8us"]
-resource_name = "hide"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Game-info:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(13.9288),
-"update": 0,
-"values": [Vector3(7.949, 5.315, 15.184)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Game-info:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_kqwv1"]
-resource_name = "intro"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Game-info:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_3lvxn"]
-resource_name = "show"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Game-info:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.0796601),
-"update": 0,
-"values": [Vector3(7.949, -0.805, 15.184)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Game-info:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqwv1"]
-_data = {
-&"RESET": SubResource("Animation_ydlvh"),
-&"hide": SubResource("Animation_pu8us"),
-&"intro": SubResource("Animation_kqwv1"),
-&"show": SubResource("Animation_3lvxn")
-}
-
 [sub_resource type="Animation" id="Animation_sdfy2"]
 length = 0.001
 tracks/0/type = "value"
@@ -1258,16 +1152,11 @@ _data = {
 &"pop-out": SubResource("Animation_ago6t")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lvxn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btg6s"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmh25"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ago6t")
 enabled = true
-GAME_LIB = ExtResource("2_3lvxn")
 DANCE_MAT_FOR_LOW_END = ExtResource("2_x23w0")
 DANCE_MAT_FOR_LOW_MIDS = ExtResource("3_btg6s")
 DANCE_MAT_FOR_MIDS = ExtResource("4_3lvxn")
@@ -2078,11 +1967,6 @@ environment = SubResource("Environment_7mycd")
 
 [node name="GAME_INFO_ANIMATOR" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CAMERA_ANIMATOR")
-libraries = {
-&"": SubResource("AnimationLibrary_kqwv1")
-}
-autoplay = "intro"
-blend_times = [&"hide", &"show", 0.25, &"show", &"hide", 0.25]
 
 [node name="CAMERA_ANIMATOR" type="AnimationPlayer" parent="."]
 libraries = {
@@ -2288,7 +2172,7 @@ gi_mode = 0
 surface_material_override/0 = ExtResource("12_55p0u")
 
 [node name="logo2" parent="." instance=ExtResource("11_mnshv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.203, -1.745, 6.817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.388, -0.38, 4.452)
 
 [node name="Cube19" parent="logo2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.55732, -0.517864)
@@ -2386,7 +2270,6 @@ surface_material_override/0 = ExtResource("1_sdfy2")
 
 [node name="Game-info" parent="." instance=ExtResource("18_3lvxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.949, -0.805, 15.184)
-visible = false
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true
@@ -2400,47 +2283,22 @@ grow_vertical = 2
 [node name="GAME_NAME" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = 1386.0
-offset_top = 123.0
-offset_right = 1679.0
-offset_bottom = 260.0
+offset_left = 1850.0
+offset_top = 547.0
+offset_right = 2143.0
+offset_bottom = 684.0
 theme = ExtResource("12_mlbg8")
-theme_override_font_sizes/font_size = 124
-theme_override_styles/normal = SubResource("StyleBoxEmpty_3lvxn")
 text = "NAME"
 
 [node name="GAME_DESCRIPTION" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = 1463.0
-offset_top = 340.0
-offset_right = 3181.0
-offset_bottom = 1121.0
+offset_left = 1853.0
+offset_top = 816.0
+offset_right = 2146.0
+offset_bottom = 953.0
 theme = ExtResource("12_mlbg8")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_btg6s")
-text = "BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH "
-autowrap_mode = 2
-text_overrun_behavior = 3
-
-[node name="LAUNCH_GAME_BUTTON" type="Button" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 2299.0
-offset_top = 1293.0
-offset_right = 3234.0
-offset_bottom = 1430.0
-theme = ExtResource("12_mlbg8")
-text = "LAUNCH GAME"
-
-[node name="CANCEL_BUTTON" type="Button" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 1290.0
-offset_top = 1296.0
-offset_right = 2225.0
-offset_bottom = 1433.0
-theme = ExtResource("12_mlbg8")
-text = "CANCEL"
+text = "DESC"
 
 [node name="Label" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -2456,10 +2314,9 @@ horizontal_alignment = 1
 [node name="GAMES" type="Control" parent="Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchor_top = 0.733
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.719971
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2518,6 +2375,50 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
+
+[node name="Button" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer" node_paths=PackedStringArray("CURRENT_GAME_BOX", "GAME_INFO_MESH")]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #1"
+script = ExtResource("15_wr2o1")
+CURRENT_GAME_BOX = NodePath("../../../CURRENT_GAME_BOX")
+game = ExtResource("16_pvuiw")
+GAME_INFO_MESH = NodePath("../../../../../Game-info")
+
+[node name="Button2" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #2"
+
+[node name="Button3" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #3"
+
+[node name="Button4" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #4"
+
+[node name="Button5" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #5"
+
+[node name="Button6" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #6"
+
+[node name="Button7" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #7"
+
+[node name="Button8" type="Button" parent="Control/GAMES/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_mlbg8")
+text = "Game #8"
 
 [node name="CURRENT_GAME_BOX" type="Control" parent="Control/GAMES"]
 anchors_preset = 0

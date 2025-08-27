@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dve4vckyogunf"]
+[gd_scene load_steps=39 format=3 uid="uid://dve4vckyogunf"]
 
 [ext_resource type="Texture2D" uid="uid://64gmrmnec314" path="res://blue_2.png" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bd6pockkh8g22" path="res://clouds.tscn" id="2_kek77"]
@@ -104,7 +104,7 @@ operator = 1
 
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_uslqw"]
 
-[sub_resource type="VisualShader" id="VisualShader_lquwl"]
+[sub_resource type="VisualShader" id="VisualShader_1bvp3"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
@@ -260,7 +260,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-693.016, -194.614)
 nodes/vertex/0/position = Vector2(1120, -160)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_ll4nq")
 nodes/vertex/2/position = Vector2(-3700, -340)
@@ -324,10 +323,37 @@ nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_36kme")
 nodes/fragment/11/position = Vector2(-441.628, 211.547)
 nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 5, 0, 0, 0, 4, 0, 7, 0, 7, 0, 6, 0, 6, 0, 8, 0, 8, 0, 5, 1, 9, 0, 10, 0, 10, 0, 11, 0, 3, 0, 9, 0, 11, 0, 5, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_1bvp3")
+shader_parameter/rotation = -0.295
+shader_parameter/SCALE = 1.0
+shader_parameter/CURVE = 0.4
+shader_parameter/MainTex = ExtResource("4_1bvp3")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_lquwl")
+shader = SubResource("VisualShader_1bvp3")
+shader_parameter/rotation = -0.295
+shader_parameter/SCALE = 1.0
+shader_parameter/CURVE = 0.4
+shader_parameter/MainTex = ExtResource("4_1bvp3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_1bvp3")
+shader_parameter/rotation = -0.295
+shader_parameter/SCALE = 1.0
+shader_parameter/CURVE = 0.4
+shader_parameter/MainTex = ExtResource("4_1bvp3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_1bvp3")
 shader_parameter/rotation = -0.295
 shader_parameter/SCALE = 1.0
 shader_parameter/CURVE = 0.4
@@ -387,4 +413,7 @@ size = Vector2i(3840, 2160)
 render_target_update_mode = 4
 
 [node name="CanvasLayer" parent="SubViewportContainer2/SubViewport" instance=ExtResource("3_h2yge")]
-DANCE_MAT = SubResource("ShaderMaterial_7mycd")
+DANCE_MAT_FOR_LOW_END = SubResource("ShaderMaterial_lquwl")
+DANCE_MAT_FOR_LOW_MIDS = SubResource("ShaderMaterial_7mycd")
+DANCE_MAT_FOR_MIDS = SubResource("ShaderMaterial_272bh")
+DANCE_MAT_FOR_HIGH_END = SubResource("ShaderMaterial_5vw27")
