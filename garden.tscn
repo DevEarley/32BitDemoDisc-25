@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://b657hb3gh5a1"]
+[gd_scene load_steps=95 format=4 uid="uid://b657hb3gh5a1"]
 
 [ext_resource type="Script" uid="uid://c6iwg4v5tf1kc" path="res://garden-viz.gd" id="1_ago6t"]
 [ext_resource type="PackedScene" uid="uid://bekm4ud6ewpsk" path="res://shovel.glb" id="1_i01nk"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://b0vn75qsdb32" path="res://boombox.glb" id="14_vmh25"]
 [ext_resource type="PackedScene" uid="uid://dfyhdaqj1fsgi" path="res://cattails-cut.glb" id="17_6m3kv"]
 [ext_resource type="PackedScene" uid="uid://blcwvdlhgphwm" path="res://game-info.tscn" id="18_3lvxn"]
+[ext_resource type="Texture2D" uid="uid://x4cq8k0yecwi" path="res://ICONS/GNOME.svg" id="21_3lvxn"]
+[ext_resource type="Texture2D" uid="uid://cmvyifbmix8yo" path="res://ICONS/gnome.tres" id="22_ydlvh"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8etlx"]
 _surfaces = [{
@@ -728,7 +730,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(13.9288),
 "update": 0,
-"values": [Vector3(7.949, 5.315, 15.184)]
+"values": [Vector3(7.949, 10.225, 15.184)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -892,6 +894,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/MUSIC_BUTTON:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_yajlf"]
@@ -1120,7 +1134,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_vmh25"]
 resource_name = "logo_out"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1240,7 +1253,19 @@ tracks/5/path = NodePath("Control/GAMES:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.7, 3.6),
+"times": PackedFloat32Array(2.13333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/MUSIC_BUTTON:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.76667, 3.35667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1258,9 +1283,52 @@ _data = {
 &"pop-out": SubResource("Animation_ago6t")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydlvh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kml3e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2bjb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu8us"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(298.532, 528.079, 245.109, 164.703)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqwv1"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(256.326, 1104.01, 247.585, 211.036)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r20b"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(281, 1098.2, 203.641, 212.215)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1wgo"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(308.029, 55.8754, 211.782, 112.736)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrhyr"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(308.364, 227.809, 212.215, 104.012)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaou0"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(448.969, 390.611, 97.2654, 123.203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l22s3"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(300.84, 381.826, 130.984, 138.765)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lvxn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btg6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o02py"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(1300.91, 32.0762, 204.713, 212.215)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydlvh"]
+atlas = ExtResource("21_3lvxn")
+region = Rect2(253.624, 710.959, 330.113, 323.039)
+margin = Rect2(0, 0, 50, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmh25"]
 
@@ -2397,13 +2465,187 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MUSIC_SETTINGS" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -1009.0
+offset_right = 987.0
+offset_bottom = -763.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_mlbg8")
+theme_override_font_sizes/font_size = 180
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ydlvh")
+text = "MUSIC SETTINGS"
+
+[node name="VOLUME" type="Label" parent="Control/MUSIC_SETTINGS"]
+layout_mode = 0
+offset_left = -161.0
+offset_top = 338.0
+offset_right = 256.0
+offset_bottom = 475.0
+theme = ExtResource("12_mlbg8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ydlvh")
+text = "VOLUME"
+
+[node name="VOLUME_SLIDER" type="HSlider" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = -1035.0
+offset_right = 897.0
+offset_bottom = -235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/grabber_offset = 205
+theme_override_icons/grabber = ExtResource("22_ydlvh")
+theme_override_icons/grabber_highlight = ExtResource("22_ydlvh")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_kml3e")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_s2bjb")
+step = 5.0
+rounded = true
+tick_count = 20
+ticks_on_borders = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/VOLUME_SLIDER"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 344.0
+offset_right = 1045.0
+offset_bottom = 508.0
+texture = SubResource("AtlasTexture_pu8us")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VOLUME_SLIDER"]
+layout_mode = 0
+offset_left = -256.0
+offset_top = 336.0
+offset_right = -9.0
+offset_bottom = 547.0
+texture = SubResource("AtlasTexture_kqwv1")
+
+[node name="TOGGLE_MUTE" type="Button" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 614.0
+offset_top = 204.0
+offset_right = 1395.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_mlbg8")
+text = "MUTE"
+icon = SubResource("AtlasTexture_6r20b")
+
+[node name="NEXT_SONG" type="Button" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 662.0
+offset_top = -233.0
+offset_right = 1662.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_mlbg8")
+text = "NEXT SONG"
+icon = SubResource("AtlasTexture_u1wgo")
+icon_alignment = 2
+
+[node name="PREVIOUS_SONG" type="Button" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.0
+offset_top = -247.0
+offset_right = 633.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_mlbg8")
+text = "PREVIOUS SONG
+"
+icon = SubResource("AtlasTexture_wrhyr")
+
+[node name="PAUSE_SONG" type="Button" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -75.0
+offset_right = 603.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_mlbg8")
+text = "PAUSE"
+icon = SubResource("AtlasTexture_oaou0")
+
+[node name="PLAY_SONG" type="Button" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 653.0
+offset_top = -60.0
+offset_right = 1434.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_mlbg8")
+text = "PLAY"
+icon = SubResource("AtlasTexture_l22s3")
+
 [node name="GAME_NAME" type="Label" parent="Control"]
 visible = false
-layout_mode = 0
-offset_left = 1386.0
-offset_top = 123.0
-offset_right = 1679.0
-offset_bottom = 260.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -968.0
+offset_right = 92.0
+offset_bottom = -798.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("12_mlbg8")
 theme_override_font_sizes/font_size = 124
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3lvxn")
@@ -2411,11 +2653,18 @@ text = "NAME"
 
 [node name="GAME_DESCRIPTION" type="Label" parent="Control"]
 visible = false
-layout_mode = 0
-offset_left = 1463.0
-offset_top = 340.0
-offset_right = 3181.0
-offset_bottom = 1121.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -736.0
+offset_right = 1553.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("12_mlbg8")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_btg6s")
 text = "BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH "
@@ -2424,72 +2673,75 @@ text_overrun_behavior = 3
 
 [node name="LAUNCH_GAME_BUTTON" type="Button" parent="Control"]
 visible = false
-layout_mode = 0
-offset_left = 2299.0
-offset_top = 1293.0
-offset_right = 3234.0
-offset_bottom = 1430.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 749.0
+offset_top = 182.0
+offset_right = 1249.0
+offset_bottom = 446.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("12_mlbg8")
-text = "LAUNCH GAME"
+text = "LAUNCH
+GAME"
 
 [node name="CANCEL_BUTTON" type="Button" parent="Control"]
 visible = false
-layout_mode = 0
-offset_left = 1290.0
-offset_top = 1296.0
-offset_right = 2225.0
-offset_bottom = 1433.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1445.0
+offset_top = 113.0
+offset_right = 1649.0
+offset_bottom = 325.0
+grow_horizontal = 2
 theme = ExtResource("12_mlbg8")
-text = "CANCEL"
+icon = SubResource("AtlasTexture_o02py")
+flat = true
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-offset_left = 1030.0
-offset_top = 1719.0
-offset_right = 2154.0
-offset_bottom = 1856.0
+offset_left = 728.0
+offset_top = 1752.0
+offset_right = 2155.0
+offset_bottom = 1889.0
 theme = ExtResource("12_mlbg8")
-text = "PRESS SPACE OR ENTER"
+text = "CLICK OR PRESS ANY BUTTON"
 horizontal_alignment = 1
+
+[node name="MUSIC_BUTTON" type="Button" parent="Control"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -914.0
+offset_top = 28.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 0
+theme = ExtResource("12_mlbg8")
+text = "MUSIC
+SETTINGS"
+icon = SubResource("AtlasTexture_ydlvh")
+alignment = 0
 
 [node name="GAMES" type="Control" parent="Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchor_top = 0.733
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.719971
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MUSIC_BUTTON" type="Button" parent="Control/GAMES"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1016.0
-offset_top = -563.0
-offset_right = 3.0
-offset_bottom = -411.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("12_mlbg8")
-flat = true
-alignment = 2
-
-[node name="Label3" type="Label" parent="Control/GAMES/MUSIC_BUTTON"]
-layout_mode = 1
-offset_left = 21.0
-offset_top = -3.0
-offset_right = 999.0
-offset_bottom = 96.0
-theme = ExtResource("12_mlbg8")
-theme_override_font_sizes/font_size = 72
-theme_override_styles/normal = SubResource("StyleBoxEmpty_vmh25")
-text = "TOGGLE MUSIC (MUSIC OFF)"
 
 [node name="Label2" type="Label" parent="Control/GAMES"]
 layout_mode = 1
@@ -2508,7 +2760,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
 offset_top = -423.0
+offset_right = -8.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0

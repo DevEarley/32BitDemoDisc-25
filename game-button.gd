@@ -9,6 +9,7 @@ var GAME_NAME;
 var GAME_DESCRIPTION
 var LAUNCH_GAME_BUTTON
 var CANCEL_BUTTON
+var MUSIC_BUTTON;
 func get_ready():
 	self.connect("focus_entered",on_focus_entered);
 	self.connect("focus_exited",on_focus_exit);
@@ -19,6 +20,7 @@ func get_ready():
 	GAME_DESCRIPTION = GAME_INFO_UI.get_node("GAME_DESCRIPTION")
 	LAUNCH_GAME_BUTTON = GAME_INFO_UI.get_node("LAUNCH_GAME_BUTTON")
 	CANCEL_BUTTON = GAME_INFO_UI.get_node("CANCEL_BUTTON")
+	MUSIC_BUTTON = GAME_INFO_UI.get_node("MUSIC_BUTTON")
 
 func on_focus_entered():
 	#GAME_INFO_ANIMATOR.play("show")
@@ -50,6 +52,7 @@ func on_thumbnail_click():
 	GAME_DESCRIPTION.hide()
 	LAUNCH_GAME_BUTTON.hide()
 	CANCEL_BUTTON.hide()
+	MUSIC_BUTTON.hide();
 	await WAIT.for_seconds(0.33)
 
 	GAME_INFO_ANIMATOR.play("show")

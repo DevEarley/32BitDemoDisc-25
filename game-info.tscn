@@ -58,35 +58,35 @@ blend_shape_mode = 0
 [node name="logo" type="Node3D" parent="."]
 
 [node name="Cube19" type="MeshInstance3D" parent="logo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26527, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297937, 3.71748, 2.01824)
 extra_cull_margin = 1000.0
 mesh = SubResource("ArrayMesh_33anw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_kw2hg")
 
 [node name="Cube3_copy52" type="MeshInstance3D" parent="logo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26527, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.40146, 7.67004, 1.81997)
 extra_cull_margin = 1000.0
 mesh = SubResource("ArrayMesh_uyg0f")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_kw2hg")
 
 [node name="SHACK_extract13" type="MeshInstance3D" parent="logo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26527, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297937, 3.71748, 2.01824)
 extra_cull_margin = 1000.0
 mesh = SubResource("ArrayMesh_kqcpa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_kw2hg")
 
 [node name="SHACK_extract14" type="MeshInstance3D" parent="logo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.61951, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297937, 5.07172, 2.01824)
 extra_cull_margin = 1000.0
 mesh = SubResource("ArrayMesh_kqcpa")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_kw2hg")
 
 [node name="SHACK_extract15" type="MeshInstance3D" parent="logo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0419, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297937, 6.49411, 2.01824)
 extra_cull_margin = 1000.0
 mesh = SubResource("ArrayMesh_kqcpa")
 skeleton = NodePath("")

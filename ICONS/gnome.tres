@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cmvyifbmix8yo"]
+
+[ext_resource type="Texture2D" uid="uid://x4cq8k0yecwi" path="res://ICONS/GNOME.svg" id="1_7t2j5"]
+
+[resource]
+atlas = ExtResource("1_7t2j5")
+region = Rect2(56.1057, 24.0599, 163.716, 298.813)

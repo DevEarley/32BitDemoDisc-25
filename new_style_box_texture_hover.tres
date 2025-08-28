@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://btunear2jgidv"]
+
+[ext_resource type="Texture2D" uid="uid://cwfub1w4nc8kg" path="res://dirt.png" id="1_gaktq"]
+
+[resource]
+texture = ExtResource("1_gaktq")
+modulate_color = Color(0.504573, 0.4899, 0.71, 0.964706)

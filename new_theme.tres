@@ -1,34 +1,19 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://6kdldrrr26nb"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://6kdldrrr26nb"]
 
-[ext_resource type="Texture2D" uid="uid://cwfub1w4nc8kg" path="res://dirt.png" id="1_amlv4"]
+[ext_resource type="StyleBox" uid="uid://chfbkletn4hcy" path="res://new_style_box_texture.tres" id="1_amlv4"]
+[ext_resource type="StyleBox" uid="uid://btunear2jgidv" path="res://new_style_box_texture_hover.tres" id="1_i7eh4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7eh4"]
-atlas = ExtResource("1_amlv4")
-region = Rect2(-1.99445, -5.13043, 1025.99, 1029.13)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_78ylj"]
-content_margin_left = 120.0
-content_margin_right = 120.0
-texture = SubResource("AtlasTexture_i7eh4")
-axis_stretch_horizontal = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q5q"]
-bg_color = Color(0, 0.209677, 0.338322, 0.384314)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-expand_margin_left = 100.0
-expand_margin_top = 50.0
-expand_margin_right = 100.0
-expand_margin_bottom = 50.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amlv4"]
 
 [resource]
 Button/font_sizes/font_size = 96
-Button/styles/normal = SubResource("StyleBoxTexture_78ylj")
+Button/styles/focus = SubResource("StyleBoxEmpty_amlv4")
+Button/styles/hover = ExtResource("1_i7eh4")
+Button/styles/normal = ExtResource("1_amlv4")
+Button/styles/pressed = ExtResource("1_amlv4")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0.0513, 0.21897, 0.27, 0.929412)
 Label/constants/shadow_offset_x = 6
 Label/constants/shadow_offset_y = 6
 Label/font_sizes/font_size = 100
-Label/styles/normal = SubResource("StyleBoxFlat_j2q5q")
+Label/styles/normal = null

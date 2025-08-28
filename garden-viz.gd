@@ -16,6 +16,7 @@ var BPM = 60
 @export var DANCE_MAT_FOR_LOW_MIDS:ShaderMaterial
 @export var DANCE_MAT_FOR_MIDS:ShaderMaterial
 @export var DANCE_MAT_FOR_HIGH_END:ShaderMaterial
+
 var SAMPLE_COUNT = 4
 
 var spectrum: AudioEffectInstance
@@ -46,15 +47,25 @@ func on_cancel():
 	$Control/GAME_DESCRIPTION.hide()
 	$Control/LAUNCH_GAME_BUTTON.hide()
 	$Control/CANCEL_BUTTON.hide()
+	$Control/PAUSE_SONG.hide()
+	$Control/TOGGLE_MUTE.hide()
+	$Control/MUSIC_SETTINGS.hide()
+	$Control/VOLUME_SLIDER.hide()
+	$Control/PLAY_SONG.hide()
+	$Control/PREVIOUS_SONG.hide()
+	$Control/NEXT_SONG.hide()
+	$Control/MUSIC_BUTTON.show();
+
 func _ready():
 
 	var button_container = $Control/GAMES/ScrollContainer/HBoxContainer
 	$Control/CANCEL_BUTTON.connect("pressed",on_cancel);
 
+	$Control/MUSIC_BUTTON.hide()
 	for game:Game in GAME_LIB.Games:
 		var child_to_add:GameButton = game_button_prefab.instantiate();
 		child_to_add.GAME_INFO_UI = $Control;
-		child_to_add.GAME_INFO_MESH = $GAME_INFO
+		child_to_add.GAME_INFO_MESH = $"Game-info"
 		child_to_add.GAME_INFO_ANIMATOR  = $GAME_INFO_ANIMATOR
 		child_to_add.GAME = game;
 		child_to_add.text = game.game_name
@@ -62,19 +73,22 @@ func _ready():
 		button_container.add_child(child_to_add)
 
 	enabled = false
-	$Control/GAMES/MUSIC_BUTTON.connect("pressed",toggle_music)
+	$Control/MUSIC_BUTTON.connect("pressed",show_music_settings)
 	spectrum = AudioServer.get_bus_effect_instance(0, 0)
 	MIN_VALUES.resize(SAMPLE_COUNT)
 	MAX_VALUES.resize(SAMPLE_COUNT)
 	MIN_VALUES.fill(0.0)
 	MAX_VALUES.fill(0.0)
 
-func _input(event):
+func _input(event:InputEvent):
 		if(STATE == STATES.ON_TITLE_SCREEN):
-			if(event.is_action_pressed("ui_accept")):
+			if(event.is_released() && event.is_action_type()):
+				STATE = STATES.ON_BACKYARD_SCREEN
 				$CAMERA_ANIMATOR.play("logo_out");
-
-
+				await WAIT.for_seconds(1.0)
+				$Control/MUSIC_BUTTON.show()
+				enabled = true
+				$AudioStreamPlayer.playing=true;
 var AVERAGE_FOR_LOW_END = 0;
 var AVERAGE_FOR_LOW_MIDS = 0;
 var AVERAGE_FOR_MIDS = 0;
@@ -96,6 +110,18 @@ func _process(delta):
 	update_high_end()
 	#$WORM_ANIMATOR.speed_scale = AVERAGE_ENERGY*AVERAGE_ENERGY*20.0
 
+func show_music_settings():
+	$Control/MUSIC_BUTTON.hide()
+	$GAME_INFO_ANIMATOR.play("show")
+	$Control/VOLUME_SLIDER.show()
+	$Control/TOGGLE_MUTE.show()
+	$Control/NEXT_SONG.show()
+	$Control/MUSIC_SETTINGS.show()
+	$Control/PREVIOUS_SONG.show()
+	$Control/PLAY_SONG.show()
+	$Control/PAUSE_SONG.show()
+	$Control/CANCEL_BUTTON.show()
+
 func update_low_end():
 	SAMPLES_FOR_LOW_END.insert(0, RAW_SAMPLE_DATA[0])
 	SAMPLES_FOR_LOW_END.resize(3)
@@ -103,7 +129,8 @@ func update_low_end():
 	for value__ in SAMPLES_FOR_LOW_END:
 		sum_for_low_end += value__;
 	AVERAGE_FOR_LOW_END = sum_for_low_end / 3.0;
-	DANCE_MAT_FOR_LOW_END.set_shader_parameter("SCALE",1.0+AVERAGE_FOR_LOW_END)
+	AUDIO_STATE.LOWS = 1.0+AVERAGE_FOR_LOW_END
+	DANCE_MAT_FOR_LOW_END.set_shader_parameter("SCALE",AUDIO_STATE.LOWS)
 
 func update_low_mids():
 	SAMPLES_FOR_LOW_MIDS.insert(0, RAW_SAMPLE_DATA[1])
@@ -112,7 +139,10 @@ func update_low_mids():
 	for value__ in SAMPLES_FOR_LOW_MIDS:
 		sum_for_low_mids += value__;
 	AVERAGE_FOR_LOW_MIDS = sum_for_low_mids / 3.0;
-	DANCE_MAT_FOR_LOW_MIDS.set_shader_parameter("SCALE",1.0+AVERAGE_FOR_LOW_MIDS)
+
+	AUDIO_STATE.LOW_MIDS = 1.0+AVERAGE_FOR_LOW_MIDS
+	DANCE_MAT_FOR_LOW_MIDS.set_shader_parameter("SCALE",AUDIO_STATE.LOW_MIDS )
+
 
 func update_mids():
 	SAMPLES_FOR_MIDS.insert(0, RAW_SAMPLE_DATA[2])
@@ -121,7 +151,8 @@ func update_mids():
 	for value__ in SAMPLES_FOR_MIDS:
 		sum_for_mids += value__;
 	AVERAGE_FOR_MIDS = sum_for_mids / 3.0;
-	DANCE_MAT_FOR_MIDS.set_shader_parameter("SCALE",1.0+AVERAGE_FOR_MIDS)
+	AUDIO_STATE.MIDS = 1.0+AVERAGE_FOR_MIDS
+	DANCE_MAT_FOR_MIDS.set_shader_parameter("SCALE",AUDIO_STATE.MIDS )
 
 func update_high_end():
 	SAMPLES_FOR_HIGH_END.insert(0, RAW_SAMPLE_DATA[3])
@@ -130,23 +161,21 @@ func update_high_end():
 	for value__ in SAMPLES_FOR_HIGH_END:
 		sum_for_high_end += value__;
 	AVERAGE_FOR_MIDS = sum_for_high_end / 3.0;
-	DANCE_MAT_FOR_HIGH_END.set_shader_parameter("SCALE",1.0+AVERAGE_FOR_HIGH_END)
+	AUDIO_STATE.HIGHS = 1.0+AVERAGE_FOR_HIGH_END
+	DANCE_MAT_FOR_HIGH_END.set_shader_parameter("SCALE",AUDIO_STATE.HIGHS)
 
 
 func toggle_music():
 	enabled = !enabled
 	$AudioStreamPlayer.playing = enabled;
-	if(enabled == false):
-		$Control/GAMES/MUSIC_BUTTON/Label3.text="TOGGLE MUSIC (MUSIC OFF)"
-	else:
-		$Control/GAMES/MUSIC_BUTTON/Label3.text="TOGGLE MUSIC (MUSIC ON)"
+
 
 func update_average_values():
 	var total = 0.0;
 	for value in RAW_SAMPLE_DATA:
 		total += value
 	AVERAGE_ENERGY = total / RAW_SAMPLE_DATA.size()
-
+	AUDIO_STATE.AVERAGE_ENERGY = AVERAGE_ENERGY;
 
 	#for prop:AnimationPlayer in ANIMATED_SPECIAL_PROPS_FOR_AVERAGED:
 		#if(energy_difference >0):
